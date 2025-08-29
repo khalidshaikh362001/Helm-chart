@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: three-tier
   labels:
     role: frontend
     env: demo
@@ -20,12 +19,12 @@ spec:
     metadata:
       labels:
         role: frontend
-    spec: 
+    spec:
       imagePullSecrets:
-      - name: ecr-registry-secret
+      - name: acr-secret 
       containers:
-      - name: frontend
-        image: 407622020962.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+      - name: frontend-ms 
+        image: argocdpoc4545.azurecr.io/frontend-ms:latest
         imagePullPolicy: Always
         env:
           - name: REACT_APP_BACKEND_URL
